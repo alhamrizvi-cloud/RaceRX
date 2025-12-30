@@ -48,7 +48,7 @@ pip install requests
 ## 🚀 Installation
 
 ```bash
-git clone https://github.com/yourusername/Racerx.git
+git clone https://github.com/alhamrizvi-cloud/RaceRX.git
 cd Racerx
 python3 racerx.py
 ```
