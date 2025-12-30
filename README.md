@@ -49,7 +49,7 @@ pip install requests
 
 ```bash
 git clone https://github.com/alhamrizvi-cloud/RaceRX.git
-cd Racerx
+cd RaceRX
 python3 racerx.py
 ```
 
