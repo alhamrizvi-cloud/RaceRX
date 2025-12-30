@@ -1,28 +1,27 @@
 
-# RaceRX ⚡
+# RaceRX ⚡ (RacerX)
 ### Race Condition Testing Tool for Bug Bounty & Security Research
 
-raceRX is a lightweight CLI tool designed to test **race condition vulnerabilities** in web applications by sending **synchronized parallel HTTP requests** to a single endpoint.
+RaceRX (also known as RacerX) is a lightweight CLI tool designed to test **race condition vulnerabilities** in web applications by sending **synchronized parallel HTTP requests** to a target endpoint.
 
-It is built for **bug bounty hunters, penetration testers, and security researchers** who want a simple and effective way to validate race conditions beyond manual testing.
+It is built for **bug bounty hunters, penetration testers, and security researchers** who want a simple but effective way to validate race conditions beyond manual Burp testing.
 
----
+
 
 ## ✨ Features
 
 - ⚡ High‑concurrency race testing
 - 🧵 Multi‑threaded request execution
-- 🧩 Accepts **raw HTTP requests** (Burp-compatible)
+- 🧩 Accepts **raw HTTP requests** (Burp‑compatible)
 - 🔁 Supports GET and POST methods
 - 📊 Displays response status codes & sizes
 - 🛡 Detects consistent vs inconsistent responses
 - 🖥 Clean CLI interface with banner
 
----
 
 ## 🎯 What RaceRX Is Used For
 
-RaceRX helps identify **business logic vulnerabilities caused by race conditions**, including:
+RaceRX helps identify **business logic vulnerabilities caused by race conditions**, such as:
 
 - Multiple coupon or promo redemptions
 - Double spending / balance duplication
@@ -31,9 +30,8 @@ RaceRX helps identify **business logic vulnerabilities caused by race conditions
 - Email / account update race issues
 - Wallet withdrawal duplication
 
-⚠️ RaceRX focuses on **logic races**, not flooding or DoS.
+⚠️ RaceRX focuses on **logic races**, not flooding or DoS attacks.
 
----
 
 ## 📦 Requirements
 
@@ -46,7 +44,6 @@ RaceRX helps identify **business logic vulnerabilities caused by race conditions
 pip install requests
 ````
 
----
 
 ## 🚀 Installation
 
@@ -56,49 +53,54 @@ cd Racerx
 python3 racerx.py
 ```
 
----
-
 ## 🌍 Make RaceRX a Global Command (Recommended)
 
 Run RaceRX from **any directory** like a real security tool.
 
-### 1️⃣ Add shebang (first line of file)
+### 1️⃣ Add a Shebang
+
+Ensure the **first line** of the script is:
 
 ```python
 #!/usr/bin/env python3
 ```
 
-### 2️⃣ Rename the file
+### 2️⃣ Rename the File
 
 ```bash
+mv toolkit1.py racerx.py
 mv racerx.py Racerx
 ```
 
-### 3️⃣ Make it executable
+### 3️⃣ Make It Executable
 
 ```bash
 chmod +x Racerx
 ```
 
-### 4️⃣ Move to PATH
+### 4️⃣ Move It to PATH
 
 ```bash
 sudo mv Racerx /usr/local/bin/
 ```
 
-### 5️⃣ Run globally 🎉
+### 5️⃣ Run Globally 🎉
 
 ```bash
 Racerx
 ```
 
-Verify:
+Verify installation:
 
 ```bash
 which Racerx
 ```
 
----
+Expected output:
+
+```
+/usr/local/bin/Racerx
+```
 
 ## 🧪 Usage
 
@@ -115,8 +117,6 @@ You will be prompted for:
 3. Raw HTTP Request
 4. Number of parallel requests
 
----
-
 ## 📝 Example Raw HTTP Request
 
 ```http
@@ -128,8 +128,6 @@ Content-Type: application/x-www-form-urlencoded
 csrf=TOKEN&coupon=PROMO20
 ```
 
----
-
 ## 📊 Sample Output
 
 ```
@@ -139,11 +137,10 @@ csrf=TOKEN&coupon=PROMO20
 [2] 200 | 312 bytes
 [3] 400 | 20 bytes
 
-[✓] Completed in 2.01 seconds
+[✓] Completed in 2.04 seconds
 [!] Inconsistent responses detected – potential race condition
 ```
 
----
 
 ## 🔍 How to Identify a Race Condition
 
@@ -151,8 +148,8 @@ Look for:
 
 * Mixed response codes (200 + 400)
 * Multiple successful responses for a single‑use action
-* Cart total / balance changing incorrectly
-* Duplicate transactions or confirmations
+* Incorrect cart totals or balance changes
+* Duplicate confirmations or transactions
 
 If all responses are identical, the endpoint is likely **race‑safe**.
 
@@ -166,7 +163,6 @@ If all responses are identical, the endpoint is likely **race‑safe**.
 * Avoid excessive threads — races require precision
 * Many endpoints are intentionally protected
 
----
 
 ## 🧠 Best Targets for RaceRX
 
@@ -185,16 +181,12 @@ If all responses are identical, the endpoint is likely **race‑safe**.
 * `/cart/coupon`
 * Strict CSRF‑locked endpoints
 
----
-
 ## 🛑 Limitations
 
 * HTTP/1.1 only
 * No HTTP/2 support
 * No automatic CSRF refresh
-* No built‑in proxy (Burp integration is manual)
-
----
+* No built‑in proxy (manual Burp integration only)
 
 ## ⚖️ Legal Disclaimer
 
@@ -203,22 +195,18 @@ This tool is intended **only for authorized security testing and educational pur
 You must have **explicit permission** before testing any target.
 The author is **not responsible** for misuse or illegal activity.
 
----
 
 ## 👨‍💻 Author
 
 **Alham Rizvi**
 Bug Bounty Hunter | Security Researcher
-X / Twitter: **@alhamrizvii**
-
----
+Instagram: **@alhamrizvii**
 
 ## ⭐ Contributing
 
 Pull requests, improvements, and feature ideas are welcome.
-Fork it, break it, improve it.
+Fork it, improve it, and break things responsibly.
 
----
 
 ## 🔮 Future Improvements
 
@@ -227,22 +215,8 @@ Fork it, break it, improve it.
 * Burp proxy integration
 * Automatic CSRF extraction
 * Response diffing & logic detection
-* CLI arguments support (`--threads`, `--url`, etc.)
+* CLI flags (`--threads`, `--url`, `--raw`)
 
----
 
 Happy Hunting ⚡
 
-```
-
----
-
-If you want next:
-- I can **shorten this for public GitHub**
-- Add **badges + screenshots**
-- Convert it into a **pip-installable tool**
-- Rename branding cleanly (`RaceRX` vs `RacerX`)
-- Review your actual Python code like a senior hunter
-
-Just say it 👊
-```
